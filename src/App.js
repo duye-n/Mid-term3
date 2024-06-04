@@ -1,31 +1,40 @@
 import axios from "axios";
-import { useEffect } from "react";
-import "./App.css";
-import './style/App.css'
+import { useEffect, useState } from "react";
+import "./style/App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import { useState } from "react";
 import Users from "./components/users/User";
-
+import Search from "./components/users/Search"; 
 
 const App = () => {
   const [users, setUsers] = useState([]);
-    useEffect(() => {
-      const fetchData = async () => {
-    try {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         const response = await axios.get("https://api.github.com/users");
         setUsers(response.data);
-    } catch (error) {console.error("Error fetching data:", error);
-    }
-  };
-  fetchData();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
   }, []);
+
   return (
     <div className="App">
-    <Navbar />
-    <div className="container">
-      <h1>GitHub Users Data</h1>
+      <Router>
+        <Navbar />
+        <div className="container">
+          <h1>GitHub Users Data</h1>
+          <Routes>
+            <Route path="/search" element={<Search />} />
+           
+          </Routes>
+        </div>
+      </Router>
     </div>
-  <Users users={users} />
-  </div>
-  );};
+  );
+};
+
 export default App;
