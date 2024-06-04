@@ -1,5 +1,6 @@
 import React from "react";
 import '../../../src/style/App.css'
+import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <nav className=" navbar bg-success">
@@ -9,8 +10,8 @@ const Navbar = () => {
             </h1>
             <ul>
                 <li >
-                    <a href="#>">Home</a>
-                    <a href="#>">About</a>
+                    <Link to="/">Home</Link>
+                    <Link to="/about">About</Link>
                 </li>
             </ul>
         </nav>

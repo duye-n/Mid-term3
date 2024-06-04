@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/User";
 import Search from "./components/users/Search"; 
+import About from "./components/users/About";
+import NotFound from "./components/users/NotFound";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -28,8 +30,9 @@ const App = () => {
         <div className="container">
           <h1>GitHub Users Data</h1>
           <Routes>
-            <Route path="/search" element={<Search />} />
-           
+            <Route path="/" element={<Search />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>
