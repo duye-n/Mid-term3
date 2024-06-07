@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Repos from "../repos/Repos";
+import '../../style/App.css'
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
@@ -58,7 +59,7 @@ const User = () => {
         <i className="fas fa-times-circle text-danger" />
       )}
       <div className="card grid-2">
-        README.md 2024-05-17 18 / 22
+
         <div className="all-center">
           <img
             src={avatar_url}
@@ -113,7 +114,7 @@ const User = () => {
             </li>
           </ul>
         </div>
-        README.md 2024-05-17 19 / 22
+     
       </div>
       <div className="card text-center">
         <div className="badge badge-primary">Followers: {followers}</div>
