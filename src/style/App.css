@@ -226,6 +226,16 @@ img {
   margin-right: 0.2rem;
 }
 
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
 .badge {
   display: inline-block;
   font-size: 0.8rem;

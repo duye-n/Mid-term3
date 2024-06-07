@@ -402,8 +402,15 @@ table th {
   .grid-4 {
     grid-template-columns: 1fr;
   }
+  body {
+    background-color: #fff;
+    color: #333;
+  }
 
-  /* Text Styles */
+  .dark-theme {
+    background-color: #333;
+    color: #fff;
+  }
   .x-large {
     font-size: 3rem;
   }
