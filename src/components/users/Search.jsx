@@ -1,18 +1,16 @@
 // Search.js
-import axios from "axios";
 import React, { useContext } from "react";
 import Users from "./Users";
 import SearchContext from "../../SearchContext";
+import { searchUsers } from "../../api/api";
 
 const Search = () => {
   const { text, setText, users, setUsers } = useContext(SearchContext);
 
-  const searchUsers = async (text) => {
+  const onSearchUsers = async (text) => {
     try {
-      const res = await axios.get(
-        `https://api.github.com/search/users?q=${text}`
-      );
-      setUsers(res.data.items);
+      const users = await searchUsers(text);
+      setUsers(users);
     } catch (err) {
       console.error(err);
     }
@@ -20,7 +18,7 @@ const Search = () => {
 
   const clearUsers = () => {
     setUsers([]);
-    setText('');
+    setText("");
   };
 
   const onSubmit = (e) => {
@@ -28,7 +26,7 @@ const Search = () => {
     if (text === "") {
       alert("Please enter something");
     } else {
-      searchUsers(text);
+      onSearchUsers(text);
     }
   };
 

@@ -1,37 +1,35 @@
-// User.js
-import axios from "axios";
+
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Repos from "../repos/Repos";
+import { getUser, getUserRepos } from "../../api/api";
 
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
 
-  const getUser = async (username) => {
-    try {
-      const res = await axios.get(`https://api.github.com/users/${username}`);
-      setUser(res.data);
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
-    }
-  };
-
-  const getUserRepos = async (id) => {
-    try {
-      const response = await axios.get(
-        `https://api.github.com/users/${id}/repos`
-      );
-      setRepos(response.data);
-    } catch (error) {
-      console.error("Error fetching user repos:", error.message);
-    }
-  };
-
   useEffect(() => {
-    getUser(id);
-    getUserRepos(id);
+    const fetchUserData = async () => {
+      try {
+        const userData = await getUser(id);
+        setUser(userData);
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
+      }
+    };
+
+    const fetchUserRepos = async () => {
+      try {
+        const userRepos = await getUserRepos(id);
+        setRepos(userRepos);
+      } catch (error) {
+        console.error("Error fetching user repos:", error.message);
+      }
+    };
+
+    fetchUserData();
+    fetchUserRepos();
   }, [id]);
 
   const {
