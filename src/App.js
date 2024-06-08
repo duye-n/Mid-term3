@@ -14,15 +14,20 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("isDarkMode", isDarkMode);
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
   }, [isDarkMode]);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode); 
-    setIcon(isDarkMode ? faSun : faMoon); 
+    setIsDarkMode(!isDarkMode);
+    setIcon(!isDarkMode ? faMoon : faSun);
   };
 
   return (
-    <div className={`App ${isDarkMode ? "dark-theme" : ""}`}>
+    <div className="App">
       <Router>
         <div className="App">
           <Navbar />

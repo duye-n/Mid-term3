@@ -31,7 +31,7 @@ const User = () => {
   useEffect(() => {
     getUser(id);
     getUserRepos(id);
-  }, []);
+  }, [id]);
   const {
     name,
     avatar_url,

@@ -8,6 +8,13 @@
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
+/* App.css */
+body.dark-mode {
+  background-color: #121212;
+  /* Dark background color */
+  color: #ffffff;
+  /* Light text color */
+}
 
 * {
   box-sizing: border-box;
