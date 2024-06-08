@@ -3,7 +3,7 @@ import UserItem from "./UserItem";
 
 const Users = (props) => {
   const { users } = props;
-
+  
 
   return (
     <div style={userStyle}>

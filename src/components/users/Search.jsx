@@ -1,11 +1,11 @@
 // Search.js
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Users from "./Users";
+import SearchContext from "../../SearchContext";
 
 const Search = () => {
-  const [text, setText] = useState("");
-  const [users, setUsers] = useState([]);
+  const { text, setText, users, setUsers } = useContext(SearchContext);
 
   const searchUsers = async (text) => {
     try {
@@ -20,6 +20,7 @@ const Search = () => {
 
   const clearUsers = () => {
     setUsers([]);
+    setText('');
   };
 
   const onSubmit = (e) => {

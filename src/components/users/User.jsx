@@ -1,23 +1,23 @@
+// User.js
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Repos from "../repos/Repos";
-import '../../style/App.css'
+
 const User = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
+
   const getUser = async (username) => {
     try {
-      const response = await axios.get(
-        `https://api.github.com/users/${username}`
-      );
-      const data = response.data;
-      setUser(data);
+      const res = await axios.get(`https://api.github.com/users/${username}`);
+      setUser(res.data);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }
   };
+
   const getUserRepos = async (id) => {
     try {
       const response = await axios.get(
@@ -28,10 +28,12 @@ const User = () => {
       console.error("Error fetching user repos:", error.message);
     }
   };
+
   useEffect(() => {
     getUser(id);
     getUserRepos(id);
   }, [id]);
+
   const {
     name,
     avatar_url,
@@ -47,6 +49,7 @@ const User = () => {
     public_gists,
     hireable,
   } = user;
+
   return (
     <Fragment>
       <Link to="/" className="btn btn-light">
@@ -59,7 +62,6 @@ const User = () => {
         <i className="fas fa-times-circle text-danger" />
       )}
       <div className="card grid-2">
-
         <div className="all-center">
           <img
             src={avatar_url}
@@ -114,7 +116,6 @@ const User = () => {
             </li>
           </ul>
         </div>
-     
       </div>
       <div className="card text-center">
         <div className="badge badge-primary">Followers: {followers}</div>
@@ -126,4 +127,5 @@ const User = () => {
     </Fragment>
   );
 };
+
 export default User;

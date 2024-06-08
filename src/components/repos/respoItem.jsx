@@ -3,11 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 const RespoItem = (props) => {
-  const { name,url } = props.repo;
+  const { name,html_url } = props.repo;
   return (
     <>
       <div className="cart">
-        <Link to={url}>{ name}</Link>
+        <Link target="_blank" to={html_url}>{ name}</Link>
       </div>
     </>
   );

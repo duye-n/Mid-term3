@@ -6,6 +6,7 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Home from "./components/layout/Home";
 
+
 function App() {
   const savedDarkMode = localStorage.getItem("isDarkMode") === "true";
 
